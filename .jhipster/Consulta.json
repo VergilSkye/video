@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "psicologo_id",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "consulta"
+        },
+        {
+            "relationshipName": "paciente_id",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "consulta"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "uuid",
+            "fieldType": "UUID"
+        },
+        {
+            "fieldName": "created_at",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "ended_at",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Duration"
+        }
+    ],
+    "changelogDate": "20191116210020",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "consulta",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

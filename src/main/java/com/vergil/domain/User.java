@@ -94,6 +94,20 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
 
+    @OneToMany(
+        mappedBy = "psicologo_id",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Consulta> psconsultas= new HashSet<>();
+
+    @OneToMany(
+        mappedBy = "paciente_id",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Consulta> paconsultas= new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -198,6 +212,36 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
     }
+
+    public Set<Consulta> getPsconsultas() {
+        return psconsultas;
+    }
+    public void addPsconsultas(Consulta consulta){
+        this.psconsultas.add(consulta);
+        consulta.setPsicologo_id(this);
+    }
+    public void removePsconsultas(Consulta consulta){
+        this.psconsultas.add(consulta);
+        consulta.setPsicologo_id(null);
+    }
+    public void setPsconsultas(Set<Consulta> psconsultas) {
+        this.psconsultas = psconsultas;
+    }
+    public Set<Consulta> getPaconsultas() {
+        return paconsultas;
+    }
+    public void addPaconsultas(Consulta consulta){
+        this.paconsultas.add(consulta);
+        consulta.setPaciente_id(this);
+    }
+    public void removePaconsultas(Consulta consulta){
+        this.paconsultas.add(consulta);
+        consulta.setPaciente_id(null);
+    }
+    public void setPaconsultas(Set<Consulta> paconsultas) {
+        this.paconsultas = paconsultas;
+    }
+
 
     @Override
     public boolean equals(Object o) {

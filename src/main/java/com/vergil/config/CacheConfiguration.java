@@ -42,6 +42,7 @@ public class CacheConfiguration {
             createCache(cm, com.vergil.domain.User.class.getName());
             createCache(cm, com.vergil.domain.Authority.class.getName());
             createCache(cm, com.vergil.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.vergil.domain.Consulta.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
