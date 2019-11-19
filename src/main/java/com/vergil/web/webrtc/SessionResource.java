@@ -123,8 +123,7 @@ public class SessionResource {
         Session session = this.consultaIdSession.get(id_consulta);
         OpenViduRole role = OpenViduRole.PUBLISHER;
         JSONObject responseJson = new JSONObject();
-        TokenOptions tokenOpts = new TokenOptions.Builder().role(role)
-            .data("SERVER=" + userLogin).build();
+        TokenOptions tokenOpts = new TokenOptions.Builder().role(role).build();
         try{
             String token = this.consultaIdSession.get(id_consulta).generateToken(tokenOpts);
             this.sessionIdUserIdToken.get(session.getSessionId()).put(userT.getId(), token);

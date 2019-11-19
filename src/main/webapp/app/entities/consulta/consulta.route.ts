@@ -12,6 +12,7 @@ import { ConsultaDetailComponent } from './consulta-detail.component';
 import { ConsultaUpdateComponent } from './consulta-update.component';
 import { ConsultaDeletePopupComponent } from './consulta-delete-dialog.component';
 import { IConsulta } from 'app/shared/model/consulta.model';
+import { VideoComponent } from './video/video.component';
 
 @Injectable({ providedIn: 'root' })
 export class ConsultaResolve implements Resolve<IConsulta> {
@@ -25,9 +26,6 @@ export class ConsultaResolve implements Resolve<IConsulta> {
     return of(new Consulta());
   }
 }
-@Injectable({ providedIn: 'root' })
-export class VideoResolver
-
 export const consultaRoute: Routes = [
   {
     path: '',
@@ -45,6 +43,18 @@ export const consultaRoute: Routes = [
   {
     path: ':id/view',
     component: ConsultaDetailComponent,
+    resolve: {
+      consulta: ConsultaResolve
+    },
+    data: {
+      authorities: ['ROLE_USER'],
+      pageTitle: 'Consultas'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: ':id/video',
+    component: VideoComponent,
     resolve: {
       consulta: ConsultaResolve
     },
